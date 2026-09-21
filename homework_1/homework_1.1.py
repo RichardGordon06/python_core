@@ -1,4 +1,3 @@
-number_1 = round(-1.66)
-
-print(int(number_1)),
-print((int(-1.66)), '\n')
+number_1 = int(-1.6)
+number_2 = int(2.99)
+print(number_1, number_2,'\n')
