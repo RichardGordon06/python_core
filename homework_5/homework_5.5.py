@@ -1,4 +1,5 @@
 import json
+from asyncio.windows_events import NULL
 from functools import reduce
 
 class InvalidTestStatusError(Exception):
@@ -13,12 +14,21 @@ def test_results():
         with open(file_name, "r", encoding="utf-8") as file: #Чтение файла
             data = json.load(file)
             tests = data.get("tests", [])
+            if tests:
+                print('Проверка на список прошла успешно')
+            else:
+                raise KeyError(f'Список тестов несформировался, проверьте файл {file_name}')
 
             for test in tests: #Отлов некорректных статусов в файле данных
                 if test.get("status") not in correct_statuses:
                     raise InvalidTestStatusError(
                         f"В файле обнаружен некорректный статус '{test.get('status')}' в тесте '{test.get('name')}'"
                     )
+                elif test.get("name") is None or test.get("name") == '':
+                    raise KeyError('В файле содержится некорректный параметр "name"')
+                elif test.get("duration") is None or test.get("duration") == '':
+                    raise KeyError('В файле содержится некорректный параметр "duration"')
+
 
             failed_tests = list(filter(lambda test: test["status"] == "FAIL", tests)) #Список упавших тестов
             failed_titles = list(map(lambda test: test["name"], failed_tests)) #Список с названиями упавших тестов
