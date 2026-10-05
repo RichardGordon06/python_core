@@ -1,0 +1,32 @@
+{
+  "test_users": [
+    {
+      "login": "Perturabo",
+      "password": "CorrectPassword123!",
+      "expected_result": "pass"
+    },
+    {
+      "login": "Korvus_korax",
+      "password": "WrongPassword123",
+      "expected_result": "fail"
+    },
+    {
+      "login": "Angron",
+      "expected_result": "pass"
+    },
+    {
+      "password": "Some333Password",
+      "expected_result": "pass"
+    },
+    {
+      "login": "Mortation",
+      "password": "OldPassword123",
+      "expected_result": "fail"
+    },
+    {
+      "login": "Magnus",
+      "password": "Password777",
+      "expected_result": "fail"
+    }
+  ]
+}

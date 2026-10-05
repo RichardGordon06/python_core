@@ -1,0 +1,34 @@
+{
+  "tests": [
+    {
+      "name": "Test_Login",
+      "status": "PASS",
+      "duration": 1.5
+    },
+    {
+      "name": "Test_Payment",
+      "status": "FAIL",
+      "duration": 3.2
+    },
+    {
+      "name": "Test_Registration",
+      "status": "SKIP",
+      "duration": 2.1
+    },
+    {
+      "name": "Test_Cart_Update",
+      "status": "PASS",
+      "duration": 0.1
+    },
+    {
+      "name": "Test_Checkout",
+      "status": "PASS",
+      "duration": 4.5
+    },
+    {
+      "name": "Test_Logout",
+      "status": "FAIL",
+      "duration": 0.8
+    }
+  ]
+}
