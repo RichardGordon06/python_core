@@ -22,7 +22,7 @@ class Bouquet:
     #Добавление цветов
     def add_flower(self, flower, count=1):
         if count <= 0:
-            raise f'Ошибка: Количество цветов не может быть отрицательным, или равным 0'
+            raise ValueError (f'Ошибка: Количество цветов не может быть отрицательным, или равным 0')
         if flower in self.flowers:
             self.flowers[flower] += count  # Если такой цветок уже есть, увеличиваем количество
         else:
@@ -40,8 +40,10 @@ class Bouquet:
         lower = name.lower()
         for flower in self.flowers.keys():
             if flower.name.lower() == lower:
-                return print(f'Да, такой цветок есть в букете')
-        return print(f'К сожалению, такого цветка нет в букете')
+                print(f'Да, такой цветок есть в букете')
+                return True
+        print(f'К сожалению, такого цветка нет в букете')
+        return False
 
 #подсчёт цены
     def total_price(self):
@@ -49,7 +51,6 @@ class Bouquet:
         # Перебираем словарь: flower — объект цветка, cnt — его количество
         for flower, cnt in self.flowers.items():
             total += flower.price * cnt
-        return total
 
         for acc in self.accessories:
             total += acc.price
@@ -63,12 +64,14 @@ class Bouquet:
             for flower in sorted_flowers:
                 cnt = self.flowers[flower]  # Достаем количество этого цветка из словаря
                 print(f" - {flower.name}: {cnt} шт. (Цена: {flower.price} руб./шт.)")
-        else:
+        elif sort == "DESC":
             print("\n Сортировка по цене (от дорогих к дешёвым)")
             sorted_flowers = sorted(self.flowers.keys(), key=lambda flower: flower.price, reverse=True)
             for flower in sorted_flowers:
                 cnt = self.flowers[flower]  # Достаем количество этого цветка из словаря
                 print(f" - {flower.name}: {cnt} шт. (Цена: {flower.price} руб./шт.)")
+        else:
+            raise ValueError (f'{sort} Такая сортировка не поддерживается, введите либо ASC, либо DESC')
 
 #Среднее время жизни букета
     def get_life_time(self):
