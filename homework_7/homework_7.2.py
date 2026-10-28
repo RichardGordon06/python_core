@@ -29,7 +29,7 @@ class ATM:
         if amount > (sum_20 + sum_50 + sum_100):
             raise ValueError('Недостаточно средств')
         if amount % 10 != 0 or amount == 10 or amount == 30:
-            raise ValueError('Банкомат не может выдать такую сумму имеющимися купюрами')
+            return False
 
         remains = amount
 
@@ -71,7 +71,7 @@ class ATM:
 
 one = ATM(10, 10, 10)
 two = one.add_money(twenty = 2, fifty = 5, hundred = 11)
-three = one.withdraw(60)
+three = one.withdraw(160)
 four = one.withdraw(1560)
 
 print(one.show_money())

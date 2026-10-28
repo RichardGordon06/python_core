@@ -1,5 +1,6 @@
 class Doctor:
     def treat(self):
+        print('Я лечу людей')
         return 'Я лечу людей'
 
 class Patient():
@@ -7,16 +8,19 @@ class Patient():
         self.treatment_plan = treatment_plan
         self.doctor = None
 
-class Dantist(Doctor):
+class Dentist(Doctor):
     def treat(self): #Специально переопределяем, как нужно в задании
+        print('Я лечу зубы людям')
         return 'Я лечу зубы людям'
 
 class Surgeon(Doctor):
     def treat(self):
+        print('Я лечу людей хирургически')
         return 'Я лечу людей хирургически'
 
 class Therapist(Doctor):
     def treat(self):
+        print('А я лечу людям всё')
         return 'А я лечу людям всё'
 
     def assign_doctor(self, patient):
@@ -25,11 +29,11 @@ class Therapist(Doctor):
         if patient.treatment_plan == 1:
             assigned_doctor = Surgeon()
         elif patient.treatment_plan == 2:
-            assigned_doctor = Dantist()
+            assigned_doctor = Dentist()
     # Сохраняем объект врача в атрибут пациента
         patient.doctor = assigned_doctor
     # Вызываем у назначенного врача метод treat()
-        patient.doctor.treat()
+        #patient.doctor.treat()
 
 # Вывод использования объектов
 head_therapist = Therapist()
